@@ -1,0 +1,38 @@
+// C# program to print all elements that
+// appear more than once.
+
+using System;
+class GFG
+{
+
+    // function to find repeating elements
+    static void WaveArray(int[] arr, int n)
+    {
+
+        for (int i = 0; i < n; i= i + 2)
+        {
+            int temp = arr[i];
+            arr[i] = arr[i + 1];
+            arr[i + 1] = temp;
+        }
+        for (int i = 0; i < n; i++)
+        {
+            Console.Write(arr[i] + " ");
+        }
+
+    }
+
+    // Driver code
+    public static void Main()
+    {
+        int[] arr = { 2,4,7,8,9,10};
+        int arr_size = arr.Length;
+
+        WaveArray(arr, arr_size);
+
+
+        // Function call
+        
+        Console.ReadLine();
+    }
+}
