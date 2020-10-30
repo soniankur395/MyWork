@@ -1,0 +1,35 @@
+// C# program to print all elements that
+// appear more than once.
+
+using System;
+class GFG
+{
+
+    // function to find repeating elements
+    static int LightningDays(int[] arr, int n)
+    {
+        int max = 0;
+        for (int i = 1; i < n; i++)
+        {
+            if (arr[i] > arr[max])
+            {
+                max = i;
+            }
+        }
+        return arr[max];
+    }
+
+    // Driver code
+    public static void Main()
+    {
+        int[] arr = { 6,5,7,4,3};
+        int arr_size = arr.Length;
+
+        int days = LightningDays(arr, arr_size);
+        Console.Write("Room will be in light for days: " + days);
+
+        // Function call
+        
+        Console.ReadLine();
+    }
+}
