@@ -1,0 +1,46 @@
+using System;
+class GFG
+{
+
+    string[] Ten = new string[] { " ", " ", "Twenty ", "Thirty ", "Fourty ", "Fifty ", "Sixty ", "Seventy ", "Eighty ", "Ninty " };
+    string[] One = new string[] { " ", "One ", "Two ", "Three ", "Four ", "Five ", "Six ", "Seven ", "Eight ", "Nine ", "Ten ", "Eleven ", "Twelve ", "Thirteen ", "Fourteen ", "Fifteen ", "Sixteen ", " Seventeen ", "Eighteen ", "Nineteen " };
+    public string NumberToWord(int num, string s)
+    {
+        string str = "";
+        if (num > 19)
+        {
+            str = str + Ten[num / 10] + One[num % 10];
+        }
+        else
+        {
+            str = str + One[num];
+        }
+        if (num != 0)
+        {
+            str = str + s;
+        }
+        return str;
+    }
+
+    public string ConverToWord(long number)
+    {
+        string out1 = "";
+        out1 = out1 + NumberToWord((int)(number/10000000), "Crore");
+        out1 = out1 + NumberToWord((int)((number / 100000)%100), "Lakh");
+        out1 = out1 + NumberToWord((int)((number / 1000) % 100), "Thousand");
+        out1 = out1 + NumberToWord((int)((number / 100) % 10), "Hundred");
+        out1 = out1 + NumberToWord((int)(number % 100), "");
+        return out1;
+    }
+
+    static void Main()
+    {
+        long n;
+        Console.WriteLine("Enter number to convert in string");
+        n = Convert.ToInt32(Console.ReadLine());
+        GFG g = new GFG();
+        Console.Write(g.ConverToWord(n));
+        Console.ReadLine();
+
+    }
+}
