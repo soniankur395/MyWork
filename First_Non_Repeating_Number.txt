@@ -4,38 +4,38 @@ using System.Collections.Generic;
 class GFG
 {
 
-    static int firstNonRepeating(int[] arr, int n)
+    static int firstNonRepeating(int[] arr, int length)
     {
-        // Insert all array elements in hash 
-        // table 
-
-        Dictionary<int, int> m = new Dictionary<int, int>();
-        for (int i = 0; i < n; i++)
+        Dictionary<int, int> dr = new Dictionary<int, int>();
+        foreach (int i in arr)
         {
-            if (m.ContainsKey(arr[i]))
+            if(!dr.ContainsKey(i))
             {
-                var val = m[arr[i]];
-                m.Remove(arr[i]);
-                m.Add(arr[i], val + 1);
+                dr.Add(i, 1);
             }
             else
             {
-                m.Add(arr[i], 1);
+                int val = dr[i];
+                dr.Remove(i);
+                dr.Add(i, val + 1);
             }
         }
-
-        // Traverse array again and return 
-        // first element with count 1. 
-        for (int i = 0; i < n; i++)
-            if (m[arr[i]] == 1)
-                return arr[i];
+        for (int j = 0; j < length; j++)
+        {
+            if(dr[arr[j]] == 1)
+            {
+                return arr[j];
+            }
+        }
         return -1;
+        
     }
 
-    // Driver code 
+
+    // Driver code d
     public static void Main(String[] args)
     {
-        int[] arr = { 9, 4, 9, 6, 7, 4 };
+        int[] arr = { 4, 4, 7, 7, 7, 51 };
         int n = arr.Length;
         Console.WriteLine("First non repeating number is: " + firstNonRepeating(arr, n));
         Console.ReadLine();
